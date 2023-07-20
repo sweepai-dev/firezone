@@ -12,21 +12,17 @@ defmodule Web.GatewaysLive.Show do
 
   def render(assigns) do
     ~H"""
-    <.section_header>
-      <:breadcrumbs>
-        <.breadcrumbs entries={[
-          %{label: "Home", path: ~p"/#{@subject.account}/dashboard"},
-          %{label: "Gateways", path: ~p"/#{@subject.account}/gateways"},
-          %{
-            label: @gateway.name_suffix,
-            path: ~p"/#{@subject.account}/gateways/#{@gateway.id}"
-          }
-        ]} />
-      </:breadcrumbs>
+    <.breadcrumbs home_path={~p"/#{@account}/dashboard"}>
+      <.breadcrumb path={~p"/#{@account}/gateways"}>Gateways</.breadcrumb>
+      <.breadcrumb path={~p"/#{@account}/gateways/#{@gateway}"}>
+        <%= @gateway.name_suffix %>
+      </.breadcrumb>
+    </.breadcrumbs>
+    <.header>
       <:title>
         Gateway: <code><%= @gateway.name_suffix %></code>
       </:title>
-    </.section_header>
+    </.header>
     <!-- Gateway details -->
     <div class="bg-white dark:bg-gray-800 overflow-hidden">
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -100,7 +96,7 @@ defmodule Web.GatewaysLive.Show do
               Last seen
             </th>
             <td class="px-6 py-4">
-              <.relative_datetime relative={@gateway.last_seen_at} />
+              <.relative_datetime datetime={@gateway.last_seen_at} />
               <br />
               <%= @gateway.last_seen_at %>
             </td>
@@ -178,7 +174,7 @@ defmodule Web.GatewaysLive.Show do
       <.table id="resources" rows={@resources}>
         <:col :let={resource} label="NAME">
           <.link
-            navigate={~p"/#{@subject.account}/resources/#{resource.id}"}
+            navigate={~p"/#{@account}/resources/#{resource.id}"}
             class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
           >
             <%= resource.name %>
@@ -190,7 +186,7 @@ defmodule Web.GatewaysLive.Show do
       </.table>
     </div>
 
-    <.section_header>
+    <.header>
       <:title>
         Danger zone
       </:title>
@@ -199,7 +195,7 @@ defmodule Web.GatewaysLive.Show do
           Delete Gateway
         </.delete_button>
       </:actions>
-    </.section_header>
+    </.header>
     """
   end
 end

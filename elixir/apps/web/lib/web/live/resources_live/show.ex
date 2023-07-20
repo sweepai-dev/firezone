@@ -3,28 +3,22 @@ defmodule Web.ResourcesLive.Show do
 
   def render(assigns) do
     ~H"""
-    <.section_header>
-      <:breadcrumbs>
-        <.breadcrumbs entries={[
-          %{label: "Home", path: ~p"/#{@subject.account}/dashboard"},
-          %{label: "Resources", path: ~p"/#{@subject.account}/resources"},
-          %{
-            label: "Engineering Jira",
-            path: ~p"/#{@subject.account}/resources/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"
-          }
-        ]} />
-      </:breadcrumbs>
+    <.breadcrumbs home_path={~p"/#{@account}/dashboard"}>
+      <.breadcrumb path={~p"/#{@account}/resources"}>Resources</.breadcrumb>
+      <.breadcrumb path={~p"/#{@account}/resources/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}>
+        Jira
+      </.breadcrumb>
+    </.breadcrumbs>
+    <.header>
       <:title>
         Viewing Resource <code>Engineering Jira</code>
       </:title>
       <:actions>
-        <.edit_button navigate={
-          ~p"/#{@subject.account}/resources/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89/edit"
-        }>
+        <.edit_button navigate={~p"/#{@account}/resources/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89/edit"}>
           Edit Resource
         </.edit_button>
       </:actions>
-    </.section_header>
+    </.header>
     <!-- Resource details -->
     <div class="bg-white dark:bg-gray-800 overflow-hidden">
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -73,7 +67,7 @@ defmodule Web.ResourcesLive.Show do
               4/15/22 12:32 PM by
               <.link
                 class="text-blue-600 hover:underline"
-                navigate={~p"/#{@subject.account}/users/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
+                navigate={~p"/#{@account}/actors/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
               >
                 Andrew Dryga
               </.link>
@@ -112,7 +106,7 @@ defmodule Web.ResourcesLive.Show do
               class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
             >
               <.link
-                navigate={~p"/#{@subject.account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
+                navigate={~p"/#{@account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
               >
                 aws-primary
@@ -133,7 +127,7 @@ defmodule Web.ResourcesLive.Show do
               class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
             >
               <.link
-                navigate={~p"/#{@subject.account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
+                navigate={~p"/#{@account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
               >
                 aws-secondary
@@ -154,7 +148,7 @@ defmodule Web.ResourcesLive.Show do
               class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
             >
               <.link
-                navigate={~p"/#{@subject.account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
+                navigate={~p"/#{@account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
               >
                 gcp-primary
@@ -175,7 +169,7 @@ defmodule Web.ResourcesLive.Show do
               class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
             >
               <.link
-                navigate={~p"/#{@subject.account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
+                navigate={~p"/#{@account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
               >
                 gcp-secondary
@@ -194,7 +188,7 @@ defmodule Web.ResourcesLive.Show do
       </table>
     </div>
 
-    <.section_header>
+    <.header>
       <:title>
         Danger zone
       </:title>
@@ -203,7 +197,7 @@ defmodule Web.ResourcesLive.Show do
           Delete Resource
         </.delete_button>
       </:actions>
-    </.section_header>
+    </.header>
     """
   end
 end

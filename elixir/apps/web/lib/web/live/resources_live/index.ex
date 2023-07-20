@@ -3,22 +3,19 @@ defmodule Web.ResourcesLive.Index do
 
   def render(assigns) do
     ~H"""
-    <.section_header>
-      <:breadcrumbs>
-        <.breadcrumbs entries={[
-          %{label: "Home", path: ~p"/#{@subject.account}/dashboard"},
-          %{label: "Resources", path: ~p"/#{@subject.account}/resources"}
-        ]} />
-      </:breadcrumbs>
+    <.breadcrumbs home_path={~p"/#{@account}/dashboard"}>
+      <.breadcrumb path={~p"/#{@account}/resources"}>Resources</.breadcrumb>
+    </.breadcrumbs>
+    <.header>
       <:title>
         All Resources
       </:title>
       <:actions>
-        <.add_button navigate={~p"/#{@subject.account}/resources/new"}>
+        <.add_button navigate={~p"/#{@account}/resources/new"}>
           Add a new Resource
         </.add_button>
       </:actions>
-    </.section_header>
+    </.header>
     <!-- Resources Table -->
     <div class="bg-white dark:bg-gray-800 overflow-hidden">
       <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
@@ -99,7 +96,7 @@ defmodule Web.ResourcesLive.Index do
                 class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
               >
                 <.link
-                  navigate={~p"/#{@subject.account}/resources/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
+                  navigate={~p"/#{@account}/resources/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   GitLab
@@ -110,28 +107,28 @@ defmodule Web.ResourcesLive.Index do
               </td>
               <td class="px-4 py-3">
                 <.link
-                  navigate={~p"/#{@subject.account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
+                  navigate={~p"/#{@account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   sjc-egress-1</.link>, <.link
-                  navigate={~p"/#{@subject.account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
+                  navigate={~p"/#{@account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   sjc-egress-2</.link>,
                 <.link
-                  navigate={~p"/#{@subject.account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
+                  navigate={~p"/#{@account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   sjc-egress-3
                 </.link>
               </td>
               <td class="px-4 py-3">
-                <.link navigate={~p"/#{@subject.account}/groups/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}>
+                <.link navigate={~p"/#{@account}/groups/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}>
                   <span class="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-900 dark:text-gray-300">
                     Engineering
                   </span>
                 </.link>
-                <.link navigate={~p"/#{@subject.account}/groups/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}>
+                <.link navigate={~p"/#{@account}/groups/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}>
                   <span class="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-900 dark:text-gray-300">
                     DevOps
                   </span>
@@ -180,7 +177,7 @@ defmodule Web.ResourcesLive.Index do
                 class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
               >
                 <.link
-                  navigate={~p"/#{@subject.account}/resources/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
+                  navigate={~p"/#{@account}/resources/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   Staging
@@ -191,19 +188,19 @@ defmodule Web.ResourcesLive.Index do
               </td>
               <td class="px-4 py-3">
                 <.link
-                  navigate={~p"/#{@subject.account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
+                  navigate={~p"/#{@account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   private-vpc
                 </.link>
               </td>
               <td class="px-4 py-3">
-                <.link navigate={~p"/#{@subject.account}/groups/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}>
+                <.link navigate={~p"/#{@account}/groups/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}>
                   <span class="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-900 dark:text-gray-300">
                     Engineering
                   </span>
                 </.link>
-                <.link navigate={~p"/#{@subject.account}/groups/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}>
+                <.link navigate={~p"/#{@account}/groups/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}>
                   <span class="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-900 dark:text-gray-300">
                     IT
                   </span>
@@ -252,7 +249,7 @@ defmodule Web.ResourcesLive.Index do
                 class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
               >
                 <.link
-                  navigate={~p"/#{@subject.account}/resources/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
+                  navigate={~p"/#{@account}/resources/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   Production
@@ -263,24 +260,24 @@ defmodule Web.ResourcesLive.Index do
               </td>
               <td class="px-4 py-3">
                 <.link
-                  navigate={~p"/#{@subject.account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
+                  navigate={~p"/#{@account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   prod-gw-1</.link>,
                 <.link
-                  navigate={~p"/#{@subject.account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
+                  navigate={~p"/#{@account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   prod-gw-2
                 </.link>
               </td>
               <td class="px-4 py-3">
-                <.link navigate={~p"/#{@subject.account}/groups/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}>
+                <.link navigate={~p"/#{@account}/groups/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}>
                   <span class="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-900 dark:text-gray-300">
                     eng-prod
                   </span>
                 </.link>
-                <.link navigate={~p"/#{@subject.account}/groups/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}>
+                <.link navigate={~p"/#{@account}/groups/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}>
                   <span class="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-900 dark:text-gray-300">
                     sec-prod
                   </span>
@@ -329,7 +326,7 @@ defmodule Web.ResourcesLive.Index do
                 class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
               >
                 <.link
-                  navigate={~p"/#{@subject.account}/resources/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
+                  navigate={~p"/#{@account}/resources/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   Jira
@@ -340,19 +337,19 @@ defmodule Web.ResourcesLive.Index do
               </td>
               <td class="px-4 py-3">
                 <.link
-                  navigate={~p"/#{@subject.account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
+                  navigate={~p"/#{@account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   prod-gw-1</.link>,
                 <.link
-                  navigate={~p"/#{@subject.account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
+                  navigate={~p"/#{@account}/gateways/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   prod-gw-2
                 </.link>
               </td>
               <td class="px-4 py-3">
-                <.link navigate={~p"/#{@subject.account}/groups/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}>
+                <.link navigate={~p"/#{@account}/groups/DF43E951-7DFB-4921-8F7F-BF0F8D31FA89"}>
                   <span class="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-900 dark:text-gray-300">
                     Engineering
                   </span>
@@ -398,7 +395,7 @@ defmodule Web.ResourcesLive.Index do
           </tbody>
         </table>
       </div>
-      <.paginator page={3} total_pages={100} collection_base_path={~p"/#{@subject.account}/gateways"} />
+      <.paginator page={3} total_pages={100} collection_base_path={~p"/#{@account}/gateways"} />
     </div>
     """
   end
